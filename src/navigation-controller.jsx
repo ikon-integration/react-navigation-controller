@@ -279,8 +279,8 @@ class NavigationController extends React.Component {
       nextView.navigationControllerWillShowView(this)
     }
     //Send props
-    if (prevView && prevView.popProps && nextView && nextView.receiveProps) {
-      nextView.receiveProps(prevView.popProps);
+    if (options && options.popProps && nextView && nextView.receiveProps) {
+      nextView.receiveProps(options.popProps);
     }
     // Built-in transition
     if (typeof transition === 'number') {
