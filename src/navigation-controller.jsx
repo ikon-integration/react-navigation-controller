@@ -39,11 +39,11 @@ const optionTypes = {
   pushView: {
     view: validate(React.isValidElement),
     transition: validate(x => isFunction(x) || isNumber(x)),
-    onComplete: validate(isFunction)
+    onComplete: validate(isFunction),
   },
   popView: {
     transition: validate(x => isFunction(x) || isNumber(x)),
-    onComplete: validate(isFunction)
+    onComplete: validate(isFunction),
   },
   popToRootView: {
     transition: validate(x => isFunction(x) || isNumber(x)),
@@ -277,6 +277,10 @@ class NavigationController extends React.Component {
     const nextView = this.refs['view-1']
     if (nextView && typeof nextView.navigationControllerWillShowView === 'function') {
       nextView.navigationControllerWillShowView(this)
+    }
+    //Send props
+    if (prevView.popProps && nextView.receiveProps) {
+      nextView.receiveProps(prevView.popProps);
     }
     // Built-in transition
     if (typeof transition === 'number') {
