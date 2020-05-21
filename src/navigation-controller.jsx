@@ -345,7 +345,7 @@ class NavigationController extends React.Component {
     }
     options = assign({}, defaults, options, { view })
     checkOptions('pushView', options)
-    if (this.__isTransitioning) return
+    if (this.__isTransitioning) return false;
     const {transition} = options
     const [prev, next] = this.__viewIndexes
     let views = this.state.views.slice()
@@ -372,7 +372,8 @@ class NavigationController extends React.Component {
       // Transition
       this.__transitionViews(options)
     })
-    this.__isTransitioning = true
+    this.__isTransitioning = true;
+    return true;
   }
 
   /**
@@ -500,7 +501,7 @@ class NavigationController extends React.Component {
   }
 
   pushView () {
-    this.__pushView(...arguments)
+    return this.__pushView(...arguments)
   }
 
   popView () {

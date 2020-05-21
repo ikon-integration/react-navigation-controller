@@ -1,6 +1,6 @@
 {
   "name": "@ikonintegration/react-navigation-controller",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "React view manager similar to UINavigationController",
   "keywords": [
     "react",
